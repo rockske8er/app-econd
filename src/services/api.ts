@@ -45,6 +45,34 @@ export const getToken = async () => {
 
 export const validateToken = async () => {
   const token  = await AsyncStorage.getItem('@econd:token')
-  const response = request('post', '/auth/validate', {}, token)
+  const response = await request('post', '/auth/validate', {}, token)
+  return response
+}
+
+export const login = async (cpf, password) => {
+  const response =await request('post', '/auth/login', {
+    cpf,
+    password
+  })
+  return response
+}
+
+export const logout = async () => {
+  const token  = await AsyncStorage.getItem('@econd:token')
+  const response = await request('post', '/auth/logout', {}, token )
+  await AsyncStorage.removeItem('@econd:token')
+  return response
+}
+
+export const register = async (name, cpf, email, password, password_confirm) => {
+
+  const response = await request('post', '/auth/register', {
+    name,
+    cpf,
+    email,
+    password,
+    password_confirm
+  },)
+
   return response
 }

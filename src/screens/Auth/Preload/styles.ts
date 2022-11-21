@@ -7,3 +7,8 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const Loading = styled.ActivityIndicator``
+
+export const BTNLogout = styled.TouchableOpacity`
+  background-color: #8863e6; 
+  height: 48px;
+`

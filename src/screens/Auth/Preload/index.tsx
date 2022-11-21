@@ -1,15 +1,19 @@
 import { useNavigation } from '@react-navigation/native';
 import { useEffect } from 'react';
-import { Alert } from 'react-native';
+import { Alert, Text } from 'react-native';
 import { useStateValue } from '../../../contexts/StateContext';
-import { getToken, validateToken } from '../../../services/api';
-import { Container, Loading  } from './styles';
+import { getToken, logout, validateToken } from '../../../services/api';
+import { BTNLogout, Container, Loading  } from './styles';
 
 export function Preload() {
 
 const [context, dispatch] =   useStateValue()
 
  const { reset } =  useNavigation()
+
+ const handleLogout = async () => {
+  await logout()
+ }
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -69,6 +73,12 @@ const [context, dispatch] =   useStateValue()
   return (
     <Container>
       <Loading size={'large'} color={'#8863e6'} />
+
+      <BTNLogout onPress={handleLogout}>
+        <Text>
+          Sair
+        </Text>
+      </BTNLogout>
     </Container>
   );
 }
