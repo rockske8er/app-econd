@@ -20,14 +20,14 @@ export default (state = INITIAL_STATE, action = {} ) => {
     case 'setUser':
       return {
         ...state,
-        token: action.payload.user
+        user: action.payload.user
       }
     break 
 
     case 'setProperty':
       return {
         ...state,
-        token: action.payload.property
+        property: action.payload.property
       }
     break 
   }

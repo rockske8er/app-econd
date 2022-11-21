@@ -22,7 +22,7 @@ export function Login() {
         dispatch({
           type: 'setToken',
           payload: {
-            user: response.token
+            token: response.token
           }
         })
         dispatch({

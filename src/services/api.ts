@@ -61,6 +61,7 @@ export const logout = async () => {
   const token  = await AsyncStorage.getItem('@econd:token')
   const response = await request('post', '/auth/logout', {}, token )
   await AsyncStorage.removeItem('@econd:token')
+  await AsyncStorage.removeItem('@econd:property')
   return response
 }
 
